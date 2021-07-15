@@ -15,12 +15,27 @@ public class UserAuthController {
 
     @PostMapping("/api/register")
     public String register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email, @RequestParam("salt") String salt) throws Exception {
-        System.out.println("아이디 : " + username);
-        int result = userAuthService.idCheck(username);
-        System.out.println("결과값 : " + result);
-        if (result != 0)
-            return "fail";
+        int usernameCheckResult = userAuthService.idCheck(username);
+        int emailCheckResult = userAuthService.emailCheck(email);
+
+        if (usernameCheckResult != 0)
+            return "username error";
+        else if (emailCheckResult != 0)
+            return "email error";
         else
             return "success";
+    }
+
+    @PostMapping("/api/login")
+    public String login(@RequestParam("username") String username, @RequestParam("password") String inputPass) throws Exception {
+        int idCheckResult = userAuthService.searchUser(username, inputPass);
+        switch(idCheckResult) {
+            case -1:
+                return "Not found id";
+            case -2:
+                return "Wrong password";
+            default:
+                return "Success";
+        }
     }
 }

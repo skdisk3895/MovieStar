@@ -8,4 +8,14 @@
     <select id="idCheck" resultType="int">
         select count(*) from users where username = #{username}
     </select>
+
+    <!--  중복 이메일 체크  -->
+    <select id="emailCheck" resultType="int">
+        select count(*) from users where email = #{email}
+    </select>
+
+    <!--  로그인 체크  -->
+    <select id="searchUser" resultType="hashmap">
+        select username, password, salt from users where username = #{username}
+    </select>
 </mapper>
