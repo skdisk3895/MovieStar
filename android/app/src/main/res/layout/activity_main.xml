@@ -7,14 +7,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="상단 고정"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:gravity="center"/>
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="영화"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,27 +38,18 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="1"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:text="박스오피스 순위"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:textStyle="bold"/>
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="1"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="1"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="1"
-                android:textSize="20sp" />
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>
@@ -56,7 +57,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/border">
 
         <Button
             android:layout_width="0dp"
